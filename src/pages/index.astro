@@ -1,0 +1,148 @@
+---
+import { Image } from 'astro:assets'
+import Layout from '../layouts/Layout.astro'
+import EventDetails from '../components/EventDetails/EventDetails.astro'
+import EventDetail from '../components/EventDetails/EventDetail.astro'
+import Waves from '../components/Waves.astro'
+import ButtonLink from '../components/ButtonLink.astro'
+import LighthouseImage from './Elliott-craw.png'
+---
+
+<Layout title="John and Victoria's Baby Bash">
+  <h1 class='card-title-1'>Ahoy! It's a boy!</h1>
+  <hr class='card-separator' />
+  <h2 class='card-title-2'>John and Victoria's Baby Bash</h2>
+  <div class='mt-2'>
+    <EventDetails>
+      <EventDetail>
+        <span slot='detail-term'>When</span>
+        <span slot='detail-definition'>2pm<br />Sunday, February 18th, 2024</span>
+      </EventDetail>
+      <EventDetail>
+        <span slot='detail-term'>Where</span>
+        <span slot='detail-definition'>5302 Roosevelt Ave, Austin, TX 78756</span>
+      </EventDetail>
+      <EventDetail>
+        <span slot='detail-term'>RSVP</span>
+        <span slot='detail-definition'>
+          → <a href='/rsvp'>Come join us, Sailor!</a>
+        </span>
+      </EventDetail>
+    </EventDetails>
+    <div class='mt-5'>
+      <ButtonLink to='https://www.babylist.com/list/turnonthefawcets' variant='wavey'>
+        View registry
+      </ButtonLink>
+    </div>
+    <!-- <ButtonLink to="#">View Registry</ButtonLink> -->
+  </div>
+  <div class='lighthouse-holder'>
+    <Image class='lighthouse-img' src={LighthouseImage} alt='Lighthouse' width='200' />
+  </div>
+  <Waves />
+</Layout>
+<style>
+  @media screen and (max-width: 600px) {
+    .lighthouse-holder {
+      display: none;
+    }
+  }
+</style>
+<script>
+  import confetti from 'canvas-confetti'
+  import { getReservation } from '../lib/api/reservations'
+  import { getUser } from '../lib/user'
+
+  type ConfettiOptions = Exclude<
+    typeof confetti extends (options: infer P) => any ? P : never,
+    undefined
+  >
+
+  function fireConfetti() {
+    interface FireOptions extends ConfettiOptions {
+      ratio: number
+      count?: number
+    }
+
+    function fire({ origin = { y: 0.7 }, count = 200, ratio, ...opts }: FireOptions) {
+      confetti({
+        ...opts,
+        particleCount: Math.floor(count * ratio),
+      })
+    }
+
+    const plan: FireOptions[] = [
+      {
+        ratio: 0.25,
+        spread: 26,
+        startVelocity: 55,
+      },
+      {
+        ratio: 0.2,
+        spread: 60,
+      },
+      {
+        ratio: 0.35,
+        spread: 100,
+        decay: 0.91,
+        scalar: 0.8,
+      },
+      {
+        ratio: 0.1,
+        spread: 120,
+        startVelocity: 25,
+        decay: 0.92,
+        scalar: 1.2,
+      },
+      {
+        ratio: 0.1,
+        spread: 120,
+        startVelocity: 45,
+      },
+    ]
+
+    plan.forEach(fire)
+  }
+
+  document.addEventListener('astro:page-load', () => {
+    setTimeout(fireConfetti, 1000)
+
+    document.querySelectorAll('.lighthouse-img').forEach(el => {
+      el.addEventListener('click', () => {
+        fireConfetti()
+      })
+    })
+
+    document.querySelectorAll('.card-ocean-bg').forEach(el => {
+      if (!(el instanceof HTMLCanvasElement)) {
+        throw new Error(
+          'Invalid element specifed for .card-ocean-bg. You biffed your markup',
+        )
+      }
+
+      initOceanBg(el)
+    })
+  })
+
+  function initOceanBg(el: HTMLCanvasElement) {
+    const ctx = el.getContext('2d')
+
+    // ctx.
+  }
+
+  async function updateBasedOnUserState() {
+    const user = getUser()
+
+    if (!user) return
+
+    const reservation = await getReservation(user.email)
+
+    if (!reservation) return
+
+    document.querySelectorAll('#rsvp-btn').forEach(el => {
+      el.innerHTML = 'Update your reservation'
+    })
+  }
+
+  updateBasedOnUserState()
+</script>

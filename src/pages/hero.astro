@@ -1,0 +1,218 @@
+---
+import { Image } from 'astro:assets'
+import Layout from '../layouts/Layout.astro'
+import EventDetails from '../components/EventDetails/EventDetails.astro'
+import EventDetail from '../components/EventDetails/EventDetail.astro'
+import Waves from '../components/Waves.astro'
+import RSVPButton from '../components/RSVPButton.astro'
+import LighthouseImage from './Elliott-craw.png'
+---
+
+<Layout title="John and Victoria's Baby Bash">
+  <div class='card-circle'>
+    <h1 class='card-title-1'>Ahoy! <br />It's a boy!</h1>
+  </div>
+</Layout>
+<script>
+  import confetti from 'canvas-confetti'
+
+  type ConfettiOptions = Exclude<
+    typeof confetti extends (options: infer P) => any ? P : never,
+    undefined
+  >
+
+  function fireConfetti() {
+    interface FireOptions extends ConfettiOptions {
+      ratio: number
+      count?: number
+    }
+
+    function fire({ origin = { y: 0.7 }, count = 200, ratio, ...opts }: FireOptions) {
+      confetti({
+        ...opts,
+        particleCount: Math.floor(count * ratio),
+      })
+    }
+
+    const plan: FireOptions[] = [
+      {
+        ratio: 0.25,
+        spread: 26,
+        startVelocity: 55,
+      },
+      {
+        ratio: 0.2,
+        spread: 60,
+      },
+      {
+        ratio: 0.35,
+        spread: 100,
+        decay: 0.91,
+        scalar: 0.8,
+      },
+      {
+        ratio: 0.1,
+        spread: 120,
+        startVelocity: 25,
+        decay: 0.92,
+        scalar: 1.2,
+      },
+      {
+        ratio: 0.1,
+        spread: 120,
+        startVelocity: 45,
+      },
+    ]
+
+    plan.forEach(fire)
+  }
+
+  setTimeout(fireConfetti, 1000)
+
+  document.querySelectorAll('.lighthouse-img').forEach(el => {
+    el.addEventListener('click', () => {
+      fireConfetti()
+    })
+  })
+
+  document.querySelectorAll('.card-ocean-bg').forEach(el => {
+    if (!(el instanceof HTMLCanvasElement)) {
+      throw new Error(
+        'Invalid element specifed for .card-ocean-bg. You biffed your markup',
+      )
+    }
+
+    initOceanBg(el)
+  })
+
+  function initOceanBg(el: HTMLCanvasElement) {
+    const ctx = el.getContext('2d')
+
+    // ctx.
+  }
+</script>
+<style>
+  @keyframes animate-card-in {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 25px, 0);
+      box-shadow: 0px 10px 0 -3px rgba(0, 0, 0, 0.8);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+      box-shadow: 0px 10px 39px -3px rgba(0, 0, 0, 0.8);
+    }
+  }
+  .dot {
+    height: 25px;
+    width: 25px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .card-circle {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    padding: 1rem;
+    margin: 1em auto;
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' width='80' height='80'%3E%3Cpath fill='%23e1e9fe' fill-opacity='0.4' d='M14 16H9v-2h5V9.87a4 4 0 1 1 2 0V14h5v2h-5v15.95A10 10 0 0 0 23.66 27l-3.46-2 8.2-2.2-2.9 5a12 12 0 0 1-21 0l-2.89-5 8.2 2.2-3.47 2A10 10 0 0 0 14 31.95V16zm40 40h-5v-2h5v-4.13a4 4 0 1 1 2 0V54h5v2h-5v15.95A10 10 0 0 0 63.66 67l-3.47-2 8.2-2.2-2.88 5a12 12 0 0 1-21.02 0l-2.88-5 8.2 2.2-3.47 2A10 10 0 0 0 54 71.95V56zm-39 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm40-40a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM15 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm40 40a2 2 0 1 0 0-4 2 2 0 0 0 0 4z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: 15%;
+    box-shadow: 0px 10px 39px -3px rgba(0, 0, 0, 0.8);
+    border: solid 20px #c20000;
+    border-radius: 50%;
+    text-align: center;
+    animation: animate-card-in 1.6s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .card {
+    position: relative;
+    max-width: 800px;
+    min-height: 800px;
+    padding: 1rem;
+    margin: 1em auto;
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' width='80' height='80'%3E%3Cpath fill='%23e1e9fe' fill-opacity='0.4' d='M14 16H9v-2h5V9.87a4 4 0 1 1 2 0V14h5v2h-5v15.95A10 10 0 0 0 23.66 27l-3.46-2 8.2-2.2-2.9 5a12 12 0 0 1-21 0l-2.89-5 8.2 2.2-3.47 2A10 10 0 0 0 14 31.95V16zm40 40h-5v-2h5v-4.13a4 4 0 1 1 2 0V54h5v2h-5v15.95A10 10 0 0 0 63.66 67l-3.47-2 8.2-2.2-2.88 5a12 12 0 0 1-21.02 0l-2.88-5 8.2 2.2-3.47 2A10 10 0 0 0 54 71.95V56zm-39 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm40-40a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM15 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm40 40a2 2 0 1 0 0-4 2 2 0 0 0 0 4z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: 15%;
+    box-shadow: 0px 10px 39px -3px rgba(0, 0, 0, 0.8);
+    border: solid 20px #c20000;
+    border-radius: 6px;
+    text-align: center;
+    animation: animate-card-in 1.6s ease-in-out;
+  }
+
+  .card-title-1 {
+    font-family: 'Wellfleet', serif;
+    font-weight: 400;
+    font-size: 5rem;
+    color: var(--blue-2);
+    text-shadow: 4px 4px 0 #fff;
+  }
+
+  .card-title-2 {
+    color: var(--blue-1);
+    margin-top: -2rem;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-shadow: 1px 1px 0 #fff;
+  }
+
+  .card-separator {
+    width: 75%;
+    margin: 1em auto;
+    border: none;
+    border-top: 3px double #333;
+    color: #333;
+    overflow: visible;
+    text-align: center;
+    height: 5px;
+  }
+
+  .card-separator::after {
+    background: #fff;
+    content: '§';
+    padding: 0 4px;
+    position: relative;
+    top: -0.8rem;
+  }
+
+  .lighthouse-holder {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    bottom: -2.2rem;
+    pointer-events: none;
+  }
+
+  .lighthouse-img {
+    pointer-events: all;
+  }
+
+  .card-ocean-bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 25%;
+    max-height: 200px;
+  }
+
+  @media screen and (max-width: 600px) {
+    .card-title-1 {
+      font-size: 3.5rem;
+    }
+
+    .card-title-2 {
+      font-size: 1rem;
+    }
+  }
+</style>

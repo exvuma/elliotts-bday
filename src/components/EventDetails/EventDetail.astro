@@ -1,0 +1,25 @@
+---
+interface Props {}
+---
+
+<div class="event-details-row">
+  <dt><slot name="detail-term" /></dt>
+  <dd><slot name="detail-definition" /></dd>
+</div>
+<style>
+  .event-details-row {
+    display: flex;
+    width: 100%;
+    margin-bottom: .75em;
+  }
+
+  .event-details-row > dt {
+    width: 25%;
+    font-weight: bold;
+    text-align: right;
+  }
+  
+  .event-details-row > dd {
+    flex: 1;
+  }
+</style>

@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro'
+import RSVPForm from '../components/RSVPForm.astro'
+import Waves from '../components/Waves.astro'
+---
+
+<Layout title="John and Victoria's Baby Bash">
+  <div class="back-btn-wrapper"><a href="/" class="back-btn">← Go back</a></div>
+  <h1 class="card-title-1">Ahoy! It's a boy!</h1>
+  <hr class="card-separator" />
+  <h2 class="card-title-2">John and Victoria's Baby Bash</h2>
+  <h3 class="card-title-3" id="rsvp-title">RSVP</h3>
+  <RSVPForm />
+  <!-- <div class="lighthouse-holder">
+    <Image class="lighthouse-img" src={LighthouseImage} alt="Lighthouse" width="200" />
+  </div> -->
+  <Waves />
+</Layout>
+<style>
+  .back-btn-wrapper {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 100%;
+    text-align: left;
+  }
+</style>
+<script>
+  import { getReservation } from '../lib/api/reservations'
+  import { getUser } from '../lib/user'
+
+  document.addEventListener('astro:page-load', async () => {
+    const user = getUser()
+
+    if (!user) return
+
+    const reservation = await getReservation(user.email)
+
+    if (!reservation) return
+
+    document.querySelectorAll('#rsvp-title').forEach((el) => {
+      el.innerHTML = 'Update your RSVP'
+    })
+  })
+</script>
