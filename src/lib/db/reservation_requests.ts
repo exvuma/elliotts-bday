@@ -42,10 +42,8 @@ returning *
 export async function getLatestReservationRequestForEmail(
   db: D1Database,
   email: string,
-): Promise<DBReservationRequest | null> {
-  const {
-    results: [result],
-  } = await db
+): Promise<DBReservationRequest> {
+  const { results } = await db
     .prepare(
       /* sql */ `
 select
@@ -64,11 +62,7 @@ limit 1
     .bind(email)
     .run()
 
-  if (!result) {
-    return null
-  }
-
-  return getReservationRequestFromD1Record(result)
+  return getReservationRequestFromD1Record(results[0])
 }
 
 function getReservationRequestFromD1Record(
