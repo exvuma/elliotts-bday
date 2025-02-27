@@ -2,7 +2,6 @@
 import { ViewTransitions } from 'astro:transitions'
 import Card from '../components/Card.astro'
 import Footer from '../components/Footer.astro'
-import Checkerboard from '../images/checkered.png'
 
 interface Props {
   title: string
@@ -12,16 +11,16 @@ const { title } = Astro.props
 ---
 
 <!doctype html>
-<html lang='en'>
+<html lang="en">
   <head>
-    <meta charset='UTF-8' />
-    <meta name='description' content='John & V want you at their baby bash!' />
-    <meta name='viewport' content='width=device-width' />
-    <meta property='og:title' content='John & V want you at their baby bash!' />
-    <meta property='og:description' content='2pm on Sunday, Feb. 18th @ their pad' />
-    <meta property='og:image' content='/images/FawcettBabyLogo.png' />
-    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-    <meta name='generator' content={Astro.generator} />
+    <meta charset="UTF-8" />
+    <meta name="description" content="John & V want you at their baby bash!" />
+    <meta name="viewport" content="width=device-width" />
+    <meta property="og:title" content="John & V want you at their baby bash!" />
+    <meta property="og:description" content="2pm on Sunday, Feb. 18th @ their pad" />
+    <meta property="og:image" content="/images/FawcettBabyLogo.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ViewTransitions />
   </head>
@@ -45,8 +44,8 @@ const { title } = Astro.props
       html {
         font-family: system-ui, sans-serif;
         font-size: 20px;
-        background-image: url(../pages/checkered.png);
-        background-repeat: repeat-y repeat-x;
+        background-image: url(/images/bg-2.png);
+        background-repeat: repeat;
         background-color: #ffffff;
         color: var(--brown-2);
       }
@@ -87,9 +86,8 @@ const { title } = Astro.props
         font-weight: 400;
         font-display: swap;
         src: url('/fonts/Shrikhand-Regular.ttf') format('woff2');
-        unicode-range:
-          U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
-          U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF,
+          U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
       }
       /* latin */
       @font-face {
@@ -98,10 +96,9 @@ const { title } = Astro.props
         font-weight: 400;
         font-display: swap;
         src: url('/fonts/Shrikhand-Regular.ttf') format('woff2');
-        unicode-range:
-          U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
-          U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
-          U+2215, U+FEFF, U+FFFD;
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+          U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+          U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
       }
 
       @font-face {
@@ -110,10 +107,9 @@ const { title } = Astro.props
         font-weight: 400;
         font-display: swap;
         src: url('/fonts/Wellfleet-Regular.ttf') format('woff2');
-        unicode-range:
-          U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
-          U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
-          U+2215, U+FEFF, U+FFFD;
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+          U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+          U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
       }
 
       .mt-2 {

@@ -1,3 +1,4 @@
+// @ts-check
 import { defineConfig } from 'astro/config'
 
 import cloudflare from '@astrojs/cloudflare'
@@ -6,12 +7,8 @@ import cloudflare from '@astrojs/cloudflare'
 export default defineConfig({
   output: 'server',
   adapter: cloudflare({
-    runtime: {
-      bindings: {
-        db: {
-          type: 'd1',
-        },
-      },
+    platformProxy: {
+      enabled: true,
     },
   }),
 })

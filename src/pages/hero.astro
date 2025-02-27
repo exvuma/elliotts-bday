@@ -1,16 +1,10 @@
 ---
-import { Image } from 'astro:assets'
 import Layout from '../layouts/Layout.astro'
-import EventDetails from '../components/EventDetails/EventDetails.astro'
-import EventDetail from '../components/EventDetails/EventDetail.astro'
-import Waves from '../components/Waves.astro'
-import RSVPButton from '../components/RSVPButton.astro'
-import LighthouseImage from './Elliott-craw/Users/victoriafawcett/Downloads/Red and White Picnic Cloth and Basket Picnic Invitation (4).png.png'
 ---
 
 <Layout title="John and Victoria's Baby Bash">
-  <div class='card-circle'>
-    <h1 class='card-title-1'>Ahoy! <br />It's a boy!</h1>
+  <div class="card-circle">
+    <h1 class="card-title-1">Ahoy! <br />It's a boy!</h1>
   </div>
 </Layout>
 <script>
@@ -69,13 +63,13 @@ import LighthouseImage from './Elliott-craw/Users/victoriafawcett/Downloads/Red 
 
   setTimeout(fireConfetti, 1000)
 
-  document.querySelectorAll('.lighthouse-img').forEach(el => {
+  document.querySelectorAll('.lighthouse-img').forEach((el) => {
     el.addEventListener('click', () => {
       fireConfetti()
     })
   })
 
-  document.querySelectorAll('.card-ocean-bg').forEach(el => {
+  document.querySelectorAll('.card-ocean-bg').forEach((el) => {
     if (!(el instanceof HTMLCanvasElement)) {
       throw new Error(
         'Invalid element specifed for .card-ocean-bg. You biffed your markup',
@@ -189,7 +183,8 @@ import LighthouseImage from './Elliott-craw/Users/victoriafawcett/Downloads/Red 
     display: flex;
     width: 100%;
     justify-content: flex-end;
-    bottom: -2.2rem;
+    bottom: -7.8rem;
+    right: -6rem;
     pointer-events: none;
   }
 
