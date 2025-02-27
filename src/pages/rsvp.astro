@@ -2,12 +2,13 @@
 import Layout from '../layouts/Layout.astro'
 import RSVPForm from '../components/RSVPForm.astro'
 import Waves from '../components/Waves.astro'
+import Redline from '../assets/redline.png'
 ---
 
 <Layout title="John and Victoria's Baby Bash">
   <div class="back-btn-wrapper"><a href="/" class="back-btn">← Go back</a></div>
   <h1 class="card-title-1">Elliott's 1st Birthday</h1>
-  <hr class="card-separator" />
+  <img src={Redline.src} class="mw-100" alt="Horizontal rule" />
   <h2 class="card-title-2">Crawfish, veggies, and frozen bevies</h2>
   <h3 class="card-title-3" id="rsvp-title">RSVP</h3>
   <RSVPForm />
