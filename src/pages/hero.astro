@@ -2,9 +2,9 @@
 import Layout from '../layouts/Layout.astro'
 ---
 
-<Layout title="John and Victoria's Baby Bash">
-  <div class="card-circle">
-    <h1 class="card-title-1">Ahoy! <br />It's a boy!</h1>
+<Layout title="Elliott's Bash">
+  <div class='card-circle'>
+    <h1 class='card-title-1'>Ahoy! <br />It's a boy!</h1>
   </div>
 </Layout>
 <script>
@@ -63,13 +63,13 @@ import Layout from '../layouts/Layout.astro'
 
   setTimeout(fireConfetti, 1000)
 
-  document.querySelectorAll('.lighthouse-img').forEach((el) => {
+  document.querySelectorAll('.lighthouse-img').forEach(el => {
     el.addEventListener('click', () => {
       fireConfetti()
     })
   })
 
-  document.querySelectorAll('.card-ocean-bg').forEach((el) => {
+  document.querySelectorAll('.card-ocean-bg').forEach(el => {
     if (!(el instanceof HTMLCanvasElement)) {
       throw new Error(
         'Invalid element specifed for .card-ocean-bg. You biffed your markup',

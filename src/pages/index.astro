@@ -9,19 +9,19 @@ import LighthouseImage from '../assets/Elliott-craw.png'
 import Redline from '../assets/redline.png'
 ---
 
-<Layout title="John and Victoria's Baby Bash">
-  <h1 class="card-title-1">Elliott's 1st Birthday</h1>
-  <img src={Redline.src} class="mw-100" alt="Horizontal rule" />
-  <h2 class="card-title-2">Crawfish, veggies, and frozen bevies</h2>
-  <div class="mt-2">
+<Layout title="Elliott's Bash">
+  <h1 class='card-title-1'>Elliott's 1st Birthday</h1>
+  <img src={Redline.src} class='mw-100' alt='Horizontal rule' />
+  <h2 class='card-title-2'>Crawfish, veggies, and frozen bevies</h2>
+  <div class='mt-2'>
     <EventDetails>
       <EventDetail>
-        <span slot="detail-term">When</span>
-        <span slot="detail-definition">4pm<br />Saturday March 29th, 2025</span>
+        <span slot='detail-term'>When</span>
+        <span slot='detail-definition'>4pm<br />Saturday March 29th, 2025</span>
       </EventDetail>
       <EventDetail>
-        <span slot="detail-term">Where</span>
-        <span slot="detail-definition">5302 Roosevelt Ave, Austin, TX 78756</span>
+        <span slot='detail-term'>Where</span>
+        <span slot='detail-definition'>5302 Roosevelt Ave, Austin, TX 78756</span>
       </EventDetail>
       <!-- <EventDetail>
         <span slot='detail-term'>RSVP</span>
@@ -30,20 +30,20 @@ import Redline from '../assets/redline.png'
         </span>
       </EventDetail> -->
     </EventDetails>
-    <div class="mt-5">
-      <ButtonLink to="rsvp" variant="wavey">
+    <div class='mt-5'>
+      <ButtonLink to='rsvp' variant='wavey'>
         <!-- <ButtonLink to='https://www.babylist.com/list/turnonthefawcets' variant='wavey'> -->
         I want to go!!
       </ButtonLink>
     </div>
     <!-- <ButtonLink to="#">View Registry</ButtonLink> -->
   </div>
-  <div class="lighthouse-holder">
+  <div class='lighthouse-holder'>
     <img
-      class="lighthouse-img"
+      class='lighthouse-img'
       src={LighthouseImage.src}
-      alt="Elliott Crawfish"
-      width="600"
+      alt='Elliott Crawfish'
+      width='600'
     />
   </div>
   <Waves />
@@ -151,13 +151,13 @@ import Redline from '../assets/redline.png'
   document.addEventListener('astro:page-load', () => {
     setTimeout(fireConfetti, 1000)
 
-    document.querySelectorAll('.lighthouse-img').forEach((el) => {
+    document.querySelectorAll('.lighthouse-img').forEach(el => {
       el.addEventListener('click', () => {
         fireConfetti()
       })
     })
 
-    document.querySelectorAll('.card-ocean-bg').forEach((el) => {
+    document.querySelectorAll('.card-ocean-bg').forEach(el => {
       if (!(el instanceof HTMLCanvasElement)) {
         throw new Error(
           'Invalid element specifed for .card-ocean-bg. You biffed your markup',
@@ -183,7 +183,7 @@ import Redline from '../assets/redline.png'
 
     if (!reservation) return
 
-    document.querySelectorAll('#rsvp-btn').forEach((el) => {
+    document.querySelectorAll('#rsvp-btn').forEach(el => {
       el.innerHTML = 'Update your reservation'
     })
   }
